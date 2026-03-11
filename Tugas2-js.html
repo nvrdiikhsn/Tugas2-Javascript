@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 Javascript</title>
+</head>
+
+<body>
+
+<marquee onmouseover="stop()" onmouseout="start()">
+    <h2>Cetak Gaji Pegawai</h2>
+</marquee>
+
+<hr>
+
+<script>
+    // Data Pegawai
+    let nama = prompt("Masukkan Nama Anda: ");
+    let umur = prompt("Masukkan Umur Anda: ");
+    let jabatan = prompt("Masukkan Jabatan Anda: ");
+    let status = prompt("Masukkan Status Anda: ");
+
+    // Gaji Pokok
+    let gapok;
+    if (jabatan == "Manajer") {
+        gapok = 15000000;
+    } 
+    else if (jabatan == "Asisten Manajer") {
+        gapok = 10000000;
+    } 
+    else if (jabatan == "Staff") {
+        gapok = 5000000;
+    } 
+    else {
+        gapok = 0;
+    }
+
+    // Tunjangan
+    let tunjanganJabatan = 0.15 * gapok;
+    let bpjs = 0.10 * gapok;
+
+    // Tunjangan Keluarga (Ternary)
+    let tunjanganKeluarga = (status == "Menikah") ? 0.20 * gapok: 0;
+
+    // Total Gaji
+    let totalGaji = gapok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+    // Tabel
+    document.write("<table border='2' cellpadding='20' align='center'>");
+
+    // Thead
+    document.write(
+        "<thead>" +
+            "<tr>" +
+                "<th>Nama Pegawai</th>" +
+                "<th>Umur</th>" +
+                "<th>Jabatan</th>" +
+                "<th>Status</th>" +
+                "<th>Gaji Pokok</th>" +
+                "<th>Tunjangan Jabatan</th>" +
+                "<th>BPJS</th>" +
+                "<th>Tunjangan Keluarga</th>" +
+            "</tr>" +
+        "</thead>"
+    );
+    // Tbody
+    document.write(
+        "<tbody>" +
+            "<tr>" +
+                "<td>" + nama + "</td>" +
+                "<td>" + umur + "</td>" +
+                "<td>" + jabatan + "</td>" +
+                "<td>" + status + "</td>" +
+                "<td>" + gapok + "</td>" +
+                "<td>" + tunjanganJabatan + "</td>" +
+                "<td>" + bpjs + "</td>" +
+                "<td>" + tunjanganKeluarga + "</td>" +
+            "</tr>" +
+        "</tbody>"
+    );
+    // Tfoot
+    document.write(
+        "<tfoot>" +
+            "<tr>" +
+                "<th colspan='7'>Total Gaji</th>" +
+                "<th>" + totalGaji + "</th>" +
+            "</tr>" +
+        "</tfoot>"
+    );
+    document.write("</table>");
+</script>
+</body>
+</html>
